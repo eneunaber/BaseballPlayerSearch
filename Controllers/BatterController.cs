@@ -34,7 +34,6 @@ public class BatterController : Controller
         {
             viewBatters.Add(_mapper.Map<BatterSimpleViewModel>(x));
         });
-        // var viewBatters = _mapper.Map<List<BatterSimpleViewModel>>(batters);
         ViewBag.Batters = viewBatters;
         return View();
     }
