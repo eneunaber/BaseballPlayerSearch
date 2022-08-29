@@ -1,0 +1,72 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Batter Data</h1>
+</div>
+<table class="table event-table" id="events" data-page-length="25" data-order='[[ 0, "desc" ]]' data-scroll-x="true">
+    <thead>
+        <tr>
+            <th>Time</th>
+            <th data-filter>Name</th>
+            <th data-filter>G</th>
+            <th data-filter>PA</th>
+            <th data-filter>HR</th>
+            <th data-filter>R</th>
+            <th data-filter>RBI</th>
+            <th data-filter>SB</th>
+            <th data-filter>BB%</th>
+            <th data-filter>K%</th>
+            <th data-filter>ISO</th>
+            <th data-filter>BABIP</th>
+            <th data-filter>AVG</th>
+            <th data-filter>SLG</th>
+            <th data-filter>PlayerID</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            var batters = ViewBag.Batters;
+            @foreach (var batter in batters)
+            {
+                <tr>
+                    <td>@batter.Name</td>
+                    <td>@batter.G</td>
+                    <td>@batter.PA</td>
+                    <td>@batter.PA</td>
+                    <td>@batter.HR</td>
+                    <td>@batter.R</td>
+                    <td>@batter.RBI</td>
+                    <td>@batter.SB</td>
+                    <td>@batter.BBPercentage</td>
+                    <td>@batter.KPercentage</td>
+                    <td>@batter.ISO</td>
+                    <td>@batter.BABIP</td>
+                    <td>@batter.AVG</td>
+                    <td>@batter.SLG</td>
+                    <td>@batter.PlayerID</td>
+                </tr>
+            }
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+    </tfoot>
+</table>
