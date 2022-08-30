@@ -4,6 +4,7 @@ using BaseballPlayerSearch.Models;
 using CsvHelper;
 using System.Globalization;
 using AutoMapper;
+using BaseballPlayerSearch.Services;
 
 namespace BaseballPlayerSearch.Controllers;
 
@@ -11,11 +12,13 @@ public class PitcherController : Controller
 {
     private readonly ILogger<PitcherController> _logger;
     private readonly IMapper _mapper;
+    private readonly ILaunchDarklyService _ldService;
 
-    public PitcherController(ILogger<PitcherController> logger, IMapper mapper)
+    public PitcherController(ILogger<PitcherController> logger, IMapper mapper, ILaunchDarklyService ldService)
     {
         _logger = logger;
         _mapper = mapper;
+        _ldService = ldService;
     }
 
     public IActionResult Index()
@@ -28,12 +31,26 @@ public class PitcherController : Controller
             pitchers = csv.GetRecords<Pitcher>().ToList();
         }
 
-        List<PitcherSimpleViewModel> viewPitchers = new List<PitcherSimpleViewModel>();
-        pitchers.ForEach(x =>
+        var flagValue = _ldService.GetLdClient().BoolVariation("EnhancedStatistics", _ldService.GetLdUser(), false);
+        ViewBag.EnhancedStatistics = flagValue;
+        if (flagValue)
         {
-            viewPitchers.Add(_mapper.Map<PitcherSimpleViewModel>(x));
-        });
-        ViewBag.Pitchers = viewPitchers;
+            List<PitcherEnhancedViewModel> viewPitchers = new List<PitcherEnhancedViewModel>();
+            pitchers.ForEach(x =>
+            {
+                viewPitchers.Add(_mapper.Map<PitcherEnhancedViewModel>(x));
+            });
+            ViewBag.Pitchers = viewPitchers;
+        }
+        else
+        {
+            List<PitcherSimpleViewModel> viewPitchers = new List<PitcherSimpleViewModel>();
+            pitchers.ForEach(x =>
+            {
+                viewPitchers.Add(_mapper.Map<PitcherSimpleViewModel>(x));
+            });
+            ViewBag.Pitchers = viewPitchers;
+        }
         return View();
     }
 

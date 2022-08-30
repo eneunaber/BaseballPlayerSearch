@@ -1,66 +1,13 @@
 ﻿@{
     ViewData["Title"] = "Pitcher Statistics";
+    var enhancedStatistics = ViewBag.EnhancedStatistics;
 }
 
-<div class="text-center">
-    <h1 class="display-4">Pitcher Statistics</h1>
-</div>
-<table class="table event-table" id="events" data-page-length="25" data-order='[[ 0, "desc" ]]' data-scroll-x="true">
-    <thead>
-        <tr>
-            <th data-filter>Name</th>
-            <th data-filter>Team</th>
-            <th data-filter>W</th>
-            <th data-filter>L</th>
-            <th data-filter>SV</th>
-            <th data-filter>G</th>
-            <th data-filter>IP</th>
-            <th data-filter>K/9</th>
-            <th data-filter>B/9</th>
-            <th data-filter>HR/9</th>
-            <th data-filter>BABIP</th>
-            <th data-filter>ERA</th>
-            <th data-filter>PlayerID</th>
-        </tr>
-    </thead>
-    <tbody>
-        @{
-            var pitchers = ViewBag.Pitchers;
-            @foreach (var pitcher in pitchers)
-            {
-                <tr>
-                    <td>@pitcher.Name</td>
-                    <td>@pitcher.Team</td>
-                    <td>@pitcher.W</td>
-                    <td>@pitcher.L</td>
-                    <td>@pitcher.SV</td>
-                    <td>@pitcher.G</td>
-                    <td>@pitcher.IP</td>
-                    <td>@pitcher.KPer9</td>
-                    <td>@pitcher.BallsPer9</td>
-                    <td>@pitcher.HRPer9</td>
-                    <td>@pitcher.BABIP</td>
-                    <td>@pitcher.ERA</td>
-                    <td>@pitcher.PlayerID</td>
-                </tr>
-            }
-        }
-    </tbody>
-    <tfoot>
-        <tr>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-        </tr>
-    </tfoot>
-</table>
+@if (enhancedStatistics)
+{
+    <partial name="_PitcherEnhancedView" />
+}
+else
+{
+    <partial name="_PitcherSimpleView" />
+}

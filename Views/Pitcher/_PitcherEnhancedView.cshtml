@@ -1,0 +1,77 @@
+﻿<table class="table event-table" id="events" data-page-length="25" data-order='[[ 0, "desc" ]]' data-scroll-x="true">
+    <thead>
+        <tr>
+            <th data-filter>Name</th>
+            <th data-filter>Team</th>
+            <th data-filter>W</th>
+            <th data-filter>L</th>
+            <th data-filter>SV</th>
+            <th data-filter>G</th>
+            <th data-filter>IP</th>
+            <th data-filter>K/9</th>
+            <th data-filter>B/9</th>
+            <th data-filter>HR/9</th>
+            <th data-filter>BABIP</th>
+            <th data-filter>LOB%</th>
+            <th data-filter>GB%</th>
+            <th data-filter>HR/FB</th>
+            <th data-filter>vFA (pi)</th>
+            <th data-filter>ERA</th>
+            <th data-filter>xERA</th>
+            <th data-filter>WAR</th>
+            <th data-filter>PlayerID</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            var pitchers = ViewBag.Pitchers;
+            @foreach (var pitcher in pitchers)
+            {
+                <tr>
+                    <td>@pitcher.Name</td>
+                    <td>@pitcher.Team</td>
+                    <td>@pitcher.W</td>
+                    <td>@pitcher.L</td>
+                    <td>@pitcher.SV</td>
+                    <td>@pitcher.G</td>
+                    <td>@pitcher.IP</td>
+                    <td>@pitcher.KPer9</td>
+                    <td>@pitcher.BallsPer9</td>
+                    <td>@pitcher.HRPer9</td>
+                    <td>@pitcher.BABIP</td>
+                    <td>@pitcher.LOBPercentage</td>
+                    <td>@pitcher.GBPercentage</td>
+                    <td>@pitcher.HonmeRunToFlyBall</td>
+                    <td>@pitcher.AvgFourSeamerVelocity</td>
+                    <td>@pitcher.ERA</td>
+                    <td>@pitcher.xERA</td>
+                    <td>@pitcher.WAR</td>
+                    <td>@pitcher.PlayerID</td>
+                </tr>
+            }
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+    </tfoot>
+</table>
