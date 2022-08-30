@@ -2,7 +2,7 @@ public class BatterEnhancedViewModel
 {
     public string Name { get; set; }
     public int G { get; set; }
-    // public int PA { get; set; }
+    public int PA { get; set; }
     public int HR { get; set; }
     public int R { get; set; }
     public int RBI { get; set; }

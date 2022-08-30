@@ -1,7 +1,7 @@
 using CsvHelper.Configuration.Attributes;
 
 
-public class PitcherEnhanceViewModel
+public class PitcherEnhancedViewModel
 {
     public string Name { get; set; }
     public string Team { get; set; }

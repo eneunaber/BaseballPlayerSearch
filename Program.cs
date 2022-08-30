@@ -1,8 +1,11 @@
+using BaseballPlayerSearch.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddAutoMapper(System.Reflection.Assembly.GetExecutingAssembly());
+builder.Services.AddSingleton<ILaunchDarklyService>(sp => { return new LaunchDarklyService(); });
 
 
 var app = builder.Build();
