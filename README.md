@@ -48,7 +48,7 @@ For this demo the project must either be cloned or downloaded and extracted via 
 
 
 ## Running the application
-### Insert SKD Key into Codebase
+### Insert SDK Key into Codebase
 After the project is installed on your machine the first step is to insert the SDK key for the targeted LaunchDarkly project and environment. 
 
 With text editor of your choice open the file LaunchDarklyService.cs. The file is located under the following folder structure:
@@ -94,7 +94,7 @@ Browse each page and observe the data that is displayed on the page.
 ### Enable Feature Flag
 Navigate to LaunchDarkly admin screen and go to the *FeatureFlags* section.
 
-Toggle the *EnhancedStatistics* flag from *Off* to *On*. Confirm by pressing *Save changes* button. (Note: *Make sure you in the correct Environment*)
+Toggle the *EnhancedStatistics* flag from *Off* to *On*. Confirm by pressing *Save changes* button. (Note: *Make sure you are in the correct Environment*)
 
 Go back to your browser, refresh the page, and again browse each page. Observe the data that is displayed on the page is showing more columns of data for each type than before. These new columns represent the "Enhanced" baseball statistics.
 
